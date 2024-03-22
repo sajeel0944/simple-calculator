@@ -1,10 +1,11 @@
 #! /usr/bin/env node
+import chalk from "chalk";
 import inquirer from "inquirer";
 const answer = await inquirer.prompt([
-    { message: "Enter first number ", type: "number", name: "FirstNumber" },
-    { message: "Enter second number", type: "number", name: "SecondNumber" },
+    { message: chalk.yellow("Enter first number "), type: "number", name: "FirstNumber" },
+    { message: chalk.yellow("Enter second number"), type: "number", name: "SecondNumber" },
     {
-        message: "select one of the operators to perform operation",
+        message: chalk.green("select one of the operators to perform operation"),
         type: "list",
         name: "operator",
         choices: [
@@ -13,9 +14,9 @@ const answer = await inquirer.prompt([
             "Multiplication",
             "Division",
             "Exponentiation",
-            "Modulus",
-        ],
-    },
+            "Modulus"
+        ]
+    }
 ]);
 //condition statement
 if (answer.operator === "Addition") {
@@ -37,5 +38,5 @@ else if (answer.operator === "Modulus") {
     console.log(answer.FirstNumber % answer.SecondNumber);
 }
 else {
-    console.log("Error");
+    console.log(chalk.red("Error"));
 }
